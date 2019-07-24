@@ -327,8 +327,9 @@ def supports_vagrant_virtualbox():
 
 
 @pytest.helpers.register
-def demands_delegated():
-    return pytest.config.getoption('--delegated')
+@pytest.fixture
+def demands_delegated(request):
+    return request.config.getoption('--delegated')
 
 
 @pytest.helpers.register
